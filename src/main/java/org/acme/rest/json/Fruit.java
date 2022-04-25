@@ -1,5 +1,8 @@
 package org.acme.rest.json;
 
+/**
+* Fruit
+*/
 public class Fruit {
 
     public String name;
