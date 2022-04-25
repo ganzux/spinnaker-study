@@ -2,26 +2,26 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     labels:
-        app: aggressive-farmer-microservice-microservice
+        app: aggressive-farmer-microservice
         stack: frontend
         source: demo
-    name: aggressive-farmer-microservice-microservice
+    name: aggressive-farmer-microservice
     namespace: microservices
 spec:
     replicas: 5
     selector:
         matchLabels:
-            run: aggressive-farmer-microservice-microservice
+            run: aggressive-farmer-microservice
     template:
         metadata:
             labels:
-                app: aggressive-farmer-microservice-microservice
-                run: aggressive-farmer-microservice-microservice
+                app: aggressive-farmer-microservice
+                run: aggressive-farmer-microservice
                 source: demo
         spec:
             containers:
-                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/aggressive-farmer-microservice-microservice
-                    name: aggressive-farmer-microservice-microservice
+                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/aggressive-farmer-microservice
+                    name: aggressive-farmer-microservice
                     ports:
                         -   name: web
                             containerPort: 8080
@@ -31,14 +31,14 @@ kind: Service
 apiVersion: v1
 metadata:
     labels:
-        app: aggressive-farmer-microservice-microservice-service
+        app: aggressive-farmer-microservice-service
         stack: frontend
-    name: aggressive-farmer-microservice-microservice-service
+    name: aggressive-farmer-microservice-service
     namespace: microservices
 spec:
     selector:
         source: demo
-        app: aggressive-farmer-microservice-microservice
+        app: aggressive-farmer-microservice
     ports:
         -   name: web
             protocol: TCP
@@ -62,7 +62,7 @@ spec:
                 paths:
                     -   path: /aggressive-farmer-microservice(/|$)(.*)
                         backend:
-                            serviceName: aggressive-farmer-microservice-microservice-service
+                            serviceName: aggressive-farmer-microservice-service
                             servicePort: 30201
 
 
